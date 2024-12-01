@@ -79,6 +79,7 @@ const InventorySystem: React.FC = () => {
         setInventory(prev => prev.filter(item => item.id !== id));
     }
 
+    //  funcão para buscar os dados do inventário
     const filteredItems = inventory.filter(item => {
         const matchesType = filters.type === 'all' || item.type === filters.type;
         const matchesSearch = item.name.toLowerCase().includes(filters.search.toLowerCase());
@@ -116,7 +117,7 @@ const InventorySystem: React.FC = () => {
             </div>
             </CardHeader>
           </Card>
-    
+          {/* Tabs de navegação para mostrar diferentes seções do sistema (cadastro e lista de itens) */}
           <Tabs value={activeTab} onValueChange={setActiveTab}>
             <TabsList className="mb-4">
               <TabsTrigger value="inventory">Ver Estoque</TabsTrigger>
@@ -141,6 +142,7 @@ const InventorySystem: React.FC = () => {
                         />
                       </div>
                     </div>
+                    {/* Filtro de tipo de produto */}
                     <Select
                       value={filters.type}
                       onValueChange={(value) => setFilters({ ...filters, type: value })}
@@ -155,6 +157,7 @@ const InventorySystem: React.FC = () => {
                         ))}
                       </SelectContent>
                     </Select>
+                    {/* Filtro de faixa de preço */}
                     <Select
                       value={filters.priceRange}
                       onValueChange={(value) => setFilters({ ...filters, priceRange: value })}
@@ -174,6 +177,7 @@ const InventorySystem: React.FC = () => {
     
                   <div className="overflow-x-auto">
                     <table className="w-full">
+                      {/* Cabeçalho da tabela */}
                       <thead>
                         <tr className="border-b">
                           <th className="text-left p-2">Nome</th>
@@ -183,6 +187,7 @@ const InventorySystem: React.FC = () => {
                           <th className="text-left p-2">Ações</th>
                         </tr>
                       </thead>
+                      {/* Exibição dos itens filtrados */}
                       <tbody>
                         {filteredItems.map(item => (
                             <tr key={item.id} className="border-b hover:bg-blue-600/80">

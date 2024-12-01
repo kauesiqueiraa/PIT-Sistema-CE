@@ -8,7 +8,14 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center gap-4">
           <p className="text-center text-sm text-muted-foreground">
-            Projeto de faculdade desenvolvido por: <span className= 'dark:text-white text-black'>Emerson</span>
+            Projeto Integrador Transdisciplinar em Sistemas de Informação II
+          </p>
+          <p className="text-center text-sm text-muted-foreground">
+            Projeto de faculdade desenvolvido por: <span className= 'dark:text-white text-black'>Emerson Oliveira</span>
+          </p>
+          <p className="text-center text-sm text-muted-foreground">
+            
+            8º Periodo - 2024
           </p>
           
           <div className="flex gap-4">
