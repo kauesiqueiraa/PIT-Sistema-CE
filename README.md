@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sistema de Controle de Estoque
 
-## Getting Started
+## Visão Geral
+O Sistema de Controle de Estoque é uma aplicação web moderna desenvolvida utilizando Next.js, Tailwind CSS e a biblioteca de componentes shadcn/ui. O sistema oferece uma interface intuitiva para gerenciamento de inventário, permitindo visualização, adição e remoção de itens do estoque.
 
-First, run the development server:
+## Tecnologias Utilizadas
+- **Next.js**: Framework React para desenvolvimento web
+- **Tailwind CSS**: Framework de estilização utility-first
+- **shadcn/ui**: Biblioteca de componentes reutilizáveis
+- **React Hooks**: Para gerenciamento de estado (useState)
+- **Lucide Icons**: Biblioteca de ícones
+- **TypeScript**: Superset JavaScript para tipagem estática
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Funcionalidades Principais
+
+### 1. Visualização do Estoque
+- Tabela interativa com informações dos itens
+- Colunas: Nome, Tipo, Quantidade, Preço e Ações
+- Interface responsiva com suporte a scroll horizontal
+
+### 2. Sistema de Filtros
+- Busca por nome de item
+- Filtro por tipo de produto
+- Filtro por faixa de preço:
+  - Até R$ 100
+  - Até R$ 500
+  - Até R$ 1000
+  - Acima de R$ 1000
+
+### 3. Gerenciamento de Itens
+- **Adição de Novos Itens:**
+  - Nome do item
+  - Tipo
+  - Quantidade
+  - Preço
+- **Remoção de Itens:**
+  - Diálogo de confirmação para evitar exclusões acidentais
+
+### 4. Interface Adaptativa
+- Suporte a tema claro/escuro
+- Layout responsivo
+- Navegação por tabs
+- Feedback visual nas interações
+
+## Estrutura de Dados
+
+### Item do Inventário (InventoryItem)
+```typescript
+{
+    id: number;
+    name: string;
+    type: string;
+    quantity: number;
+    price: number;
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Filtros (Filters)
+```typescript
+{
+    type: string;
+    search: string;
+    priceRange: string;
+}
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Novo Item (NewItem)
+```typescript
+{
+    name: string;
+    type: string;
+    quantity: string;
+    price: string;
+}
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Componentes Principais
 
-## Learn More
+### 1. InventorySystem
+- Componente principal que gerencia todo o estado da aplicação
+- Implementa a lógica de filtragem e manipulação do inventário
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Tabs de Navegação
+- "Ver Estoque": Exibe a lista de itens atual
+- "Adicionar Item": Formulário para inclusão de novos itens
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Card de Filtros
+- Barra de busca com ícone
+- Seletor de tipo de produto
+- Seletor de faixa de preço
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Tabela de Inventário
+- Exibição dos itens filtrados
+- Botão de exclusão com confirmação
+- Formatação de valores monetários
 
-## Deploy on Vercel
+## Segurança e Validação
+- Confirmação antes de excluir itens
+- Validação de campos obrigatórios no formulário
+- Valores mínimos definidos para quantidade e preço
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Possíveis Melhorias Futuras
+1. Implementação de persistência de dados
+2. Sistema de autenticação
+3. Histórico de alterações
+4. Exportação de relatórios
+5. Edição de itens existentes
+6. Categorias personalizáveis
+7. Alertas de estoque baixo
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Como Executar o Projeto
+1. Certifique-se de ter Node.js instalado
+2. Instale as dependências: `npm install`
+3. Execute o projeto: `npm run dev`
+4. Acesse: `http://localhost:3000`
+
+## Requisitos do Sistema
+- Node.js
+- Navegador web moderno
+- Conexão com internet (para carregamento de CDN)
